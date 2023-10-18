@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Tabuada</title>
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        for(var tabuada = 1; tabuada <= 10; tabuada++) {
+            var tabela = document.createElement("table");
+			tabela.style = "border: 1px solid red";
+			tabela.style.border = "1px solid red";
+			tabela.style.marginBottom = "6px";
+            for(var numero = 1; numero <= 10; numero++) {
+                var linha = document.createElement("tr");
+                var td1 = document.createElement("td");
+                td1.innerText = tabuada;
+                var td2 = document.createElement("td");
+                td2.innerText = "x";
+                var td3 = document.createElement("td");
+                td3.innerText = numero;
+                var td4 = document.createElement("td");
+                td4.innerText = "=";
+                var td5 = document.createElement("td");
+                td5.innerText = tabuada * numero;
+                tabela.appendChild(linha);
+                linha.appendChild(td1);
+                linha.appendChild(td2);
+                linha.appendChild(td3);
+                linha.appendChild(td4);
+                linha.appendChild(td5);
+            }
+            document.querySelector("body").appendChild(tabela);
+        }
+    </script>
+</html>
