@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>Tabela</title>
+	</head>
+	<body>
+		<script>
+			var clique1 = null;
+			var clique2 = null;
+			
+			function acao(event){
+				if( clique1 == null ){
+					clique1 = event.target;
+					clique1.src = './icones/' + clique1.name;
+					return;
+				}
+				
+				if( clique2 == null ){
+					clique2 = event.target;
+					clique2.src = './icones/' + clique2.name;
+					
+					if( clique1.src == clique2.src ){
+						clique1.removeEventListener( 'click', acao );
+						clique2.removeEventListener( 'click', acao );
+						clique1 = null;
+						clique2 = null;
+					}
+					return;
+				}
+				
+				clique1.src = './icones/0.png';
+				clique2.src = './icones/0.png';
+				clique1 = null;
+				clique2 = null;
+				
+				//window.alert( event.target.src );
+			}
+			
+			var tabela = document.createElement('table');
+			tabela.align = 'center';
+			for( var indiceLinha=1; indiceLinha<=4; indiceLinha++ ){
+				var linha = document.createElement('tr');
+				tabela.appendChild( linha );
+				
+				for( var indiceColuna=1; indiceColuna<=7; indiceColuna++ ){
+					var coluna = document.createElement('td');
+					coluna.style.width = '40px';
+					coluna.style.height = '40px';
+					
+					var imagem = document.createElement('img');
+					coluna.appendChild( imagem );
+					imagem.src = './icones/0.png';
+					imagem.className = 'semImagem';
+					imagem.addEventListener('click', acao );
+					
+					linha.appendChild( coluna );
+				}
+			}
+			document.querySelector('body').appendChild( tabela );
+			tabela.style.border = 'solid 2px purple';
+			
+			for( var indiceImagem=1; indiceImagem<=14; indiceImagem++ ){
+				var imgs = document.querySelectorAll('img[class=semImagem');
+				var indice1 = 0;
+				var indice2 = 0;
+				
+				while( indice1 == indice2 ){
+					indice1 = (imgs.length * Math.random()) | 0;
+					indice2 = (imgs.length * Math.random()) | 0;
+				}
+				
+				//imgs[indice1].src = './icones/' + indiceImagem + '.png';
+				//imgs[indice2].src = './icones/' + indiceImagem + '.png';
+				
+				imgs[indice1].className = 'comImagem';
+				imgs[indice2].className = 'comImagem';
+				
+				imgs[indice1].name = indiceImagem + '.png';
+				imgs[indice2].name = indiceImagem + '.png';
+			}
+		</script>
+	</body>
+</html>
