@@ -1,0 +1,166 @@
+<html>
+	<head>
+		<title>Exercicio 5</title>
+		<style>
+			input{
+				width: 40px;
+				height: 40px;
+			}
+			#resultado{
+				width: 220px;
+			}
+			.botVert{
+				height: 85px;
+			}
+			.botHoriz{
+				width: 85px;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td colspan="5">
+					<input type="text" id="resultado" value=""/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="MC"/>
+				</td>
+				<td>
+					<input type="button" value="MR"/>
+				</td>
+				<td>
+					<input type="button" value="MS"/>
+				</td>
+				<td>
+					<input type="button" value="M+"/>
+				</td>
+				<td>
+					<input type="button" value="M-"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="<-"/>
+				</td>
+				<td>
+					<input type="button" value="CE"/>
+				</td>
+				<td>
+					<input type="button" value="C"/>
+				</td>
+				<td>
+					<input type="button" value="+/-"/>
+				</td>
+				<td>
+					<input type="button" value="sqrt"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="7"/>
+				</td>
+				<td>
+					<input type="button" value="8"/>
+				</td>
+				<td>
+					<input type="button" value="9"/>
+				</td>
+				<td>
+					<input type="button" value="/"/>
+				</td>
+				<td>
+					<input type="button" value="%"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="4"/>
+				</td>
+				<td>
+					<input type="button" value="5"/>
+				</td>
+				<td>
+					<input type="button" value="6"/>
+				</td>
+				<td>
+					<input type="button" value="*"/>
+				</td>
+				<td>
+					<input type="button" value="1/x"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input type="button" value="1"/>
+				</td>
+				<td>
+					<input type="button" value="2"/>
+				</td>
+				<td>
+					<input type="button" value="3"/>
+				</td>
+				<td>
+					<input type="button" value="-"/>
+				</td>
+				<td rowspan="2">
+					<input type="button" value="=" class="botVert"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="0" class="botHoriz"/>
+				</td>
+				<td>
+					<input type="button" value="."/>
+				</td>
+				<td>
+					<input type="button" value="+"/>
+				</td>
+			</tr>
+		</table>
+		<script>
+			function funcao( event ){
+				var conteudo = event.target.value;
+				//alert( event.target.value );
+				switch( conteudo ){
+					case '1':
+					case '2':
+					case '3':
+					case '4':
+					case '5':
+					case '6':
+					case '7':
+					case '8':
+					case '9':
+					case '.':
+					case '+':
+					case '-':
+					case '/':
+					case '*':
+						var texto = document.querySelector("#resultado");
+						texto.value = texto.value + conteudo;
+						break;
+					case '=':
+						var texto = document.querySelector("#resultado");
+						texto.value = eval( texto.value );
+						break;
+					case 'C':
+					case 'CE':
+						var texto = document.querySelector("#resultado");
+						texto.value = '';
+						break;
+				}
+			}
+			
+			var botoes = document.querySelectorAll("input[type=button]");
+			for( var i=0; i<botoes.length; i++ ){
+				var botao = botoes[i];
+				botao.addEventListener("click", funcao);
+			}
+		
+		</script>
+	</body>
+</html>
