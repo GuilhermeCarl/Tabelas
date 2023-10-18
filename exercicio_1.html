@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>Exercicio 1</title>		
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>Nome:</td>
+				<td><input type="text" id="nome"/></td>
+			</tr>
+			<tr>
+				<td>Sobrenome:</td>
+				<td><input type="text" id="sobrenome"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" value="Enviar"/></td>
+			</tr>
+		</table>
+		<script>
+			function verificar(){
+				//window.alert("Funciona!");
+				var nome = document.querySelector("#nome");
+				//nome.style = "background-color:rgb(41,175,214)";
+				
+				if( nome.value == "" ){
+					//window.alert("campo nome vazio");
+					nome.style = "background-color:rgb(255,0,0)";
+				}
+				else{
+					nome.style = "background-color:rgb(0,255,0)";
+				}
+				
+				var sobrenome = document.querySelector("#sobrenome");
+				if( sobrenome.value == "" ){
+					//window.alert("campo sobrenome vazio");
+					sobrenome.style = "background-color:rgb(255,0,0)";
+				}
+				else{
+					sobrenome.style = "background-color:rgb(0,255,0)";
+				}
+			}
+			
+			var button = window.document.querySelector("input[type=button]");
+			//button.style = "background-color:rgb(41,175,214)";
+			button.addEventListener("click", verificar);
+		</script>
+	</body>
+</html>
