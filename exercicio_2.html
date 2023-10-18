@@ -1,0 +1,74 @@
+<html>
+	<head>
+		<title>Exercicio 2</title>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>Nota 1ª bimestre:</td>
+				<td><input type="text" id="primBim"/></td>
+			</tr>
+			<tr>
+				<td>Nota 2ª bimestre:</td>
+				<td><input type="text" id="segBim"/></td>
+			</tr>
+			<tr>
+				<td>Nota 3ª bimestre:</td>
+				<td><input type="text" id="terBim"/></td>
+			</tr>
+			<tr>
+				<td>Nota 4ª bimestre:</td>
+				<td><input type="text" id="quarBim"/></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="button" value="Calcular médias"/></td>
+			</tr>
+		</table>
+		<script>
+			var nota1, nota2, nota3, nota4;
+			
+			function carregarValores(){
+				nota1 = document.querySelector("#primBim").value;
+				nota1 = parseFloat(nota1);
+				
+				nota2 = document.querySelector("#segBim").value;
+				nota2 = parseFloat(nota2);
+				
+				nota3 = document.querySelector("#terBim").value;
+				nota3 = parseFloat(nota3);
+				
+				nota4 = document.querySelector("#quarBim").value;
+				nota4 = parseFloat(nota4);
+			}
+			
+			function mediaAritmetica(nota1, nota2, nota3, nota4){
+				var soma = nota1 + nota2 + nota3 + nota4;
+				var media = soma / 4;
+				return media;
+			}
+			
+			function mediaPonderada(nota1b, peso1, nota2b, peso2, nota3b, peso3, nota4b, peso4){
+				var somaNotaPeso = nota1b * peso1 + nota2b * peso2 + nota3b * peso3 + nota4b * peso4;
+				var somaPeso = peso1 + peso2 + peso3 + peso4;
+				var media = somaNotaPeso / somaPeso;
+				return media;
+			}
+			
+			function exibirResultado(media, mediaPon){
+				var texto = "Media aritmetica é " + media;
+				texto = texto + "\nMedia ponderada é " + mediaPon;
+				window.alert( texto );
+			}
+			
+			function calcular(){
+				carregarValores();
+				var mediaA = mediaAritmetica(nota1, nota2, nota3, nota4);
+				var mediaP = mediaPonderada(nota1, 1.5, nota2, 2.0, nota3, 2.5, nota4, 3.0);
+				exibirResultado(mediaA, mediaP);
+			}
+			
+			document.querySelector("input[type=button]").addEventListener("click", calcular);
+		</script>
+	</body>
+</html>
